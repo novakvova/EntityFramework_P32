@@ -1,0 +1,2 @@
+Server=.;Database=slonyk;Integrated Security=True;TrustServerCertificate=True;
+Data Source=vova_lutsk.mssql.somee.com;User=neyojef748_SQLLogin_1;Password=hk8wyz31xm;Initial Catalog=vova_lutsk
