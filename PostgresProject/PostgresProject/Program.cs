@@ -20,7 +20,16 @@ namespace PostgresProject
             Console.WriteLine("Передаю вітання нашим друзям Броненосцям. :)!");
 
             var specieService = sp.GetService<ISpecieService>();
-            specieService.CreateSpecie("Коти мурчик");
+
+            try
+            {
+               specieService.CreateSpecie("Коти мурчик");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Виникла проблема {ex.Message}");
+            }
+
             var list = specieService.GetAllSpecies();
             foreach (var item in list)
             {

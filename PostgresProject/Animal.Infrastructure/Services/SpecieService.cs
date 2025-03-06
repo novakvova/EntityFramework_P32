@@ -17,6 +17,13 @@ namespace Animal.Infrastructure.Services
             if (string.IsNullOrWhiteSpace(name))
                 throw new ArgumentException("Specie name cannot be empty.");
 
+            var entity = _repository.GetQuery()
+                .Where(s => s.Name == name);
+            if(entity.Any())
+            {
+                throw new Exception("------Такий бармалей уже є :)------");
+            }
+
             var specie = new Specie { Name = name };
             _repository.Add(specie);
             _repository.SaveChanges();

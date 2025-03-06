@@ -42,5 +42,10 @@ namespace Animal.Infrastructure.Services
         {
             _context.SaveChanges();
         }
+
+        public IQueryable<T> GetQuery()
+        {
+            return _dbSet.AsQueryable();
+        }
     }
 }
