@@ -6,6 +6,17 @@ namespace Animal.Infrastructure
     public class AppAnimalContext : DbContext
     {
         public DbSet<Specie> Species { get; set; }
+
+        public AppAnimalContext() //Якщо не передаємо налашування
+        {
+            
+        }
+
+        //Якщо задано налаштування
+        public AppAnimalContext(DbContextOptions<AppAnimalContext> options)
+            : base(options) { }
+
+        //Налаштування по замовчуванні
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             //optionsBuilder.UseNpgsql("Server=localhost;Database=AnimalDb;User Id=postgres;Password=123456;");

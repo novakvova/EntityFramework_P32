@@ -16,9 +16,15 @@ namespace PostgresProject
 
             var myRep = new Repository<Specie>(context);
             var entity = new Specie();
-            entity.Name = "Кіт";
+            entity.Name = "Кіт мурків";
             myRep.Add(entity);
             myRep.SaveChanges();
+
+            var list = myRep.GetAll();
+            foreach (var item in list)
+            {
+                Console.WriteLine($"----{item.Name}------");
+            }
         }
     }
 }
