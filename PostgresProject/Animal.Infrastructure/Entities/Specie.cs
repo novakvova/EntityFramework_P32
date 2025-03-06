@@ -10,5 +10,7 @@ namespace Animal.Infrastructure.Entities
         public int Id { get; set; }
         [Required, StringLength(100)]
         public string Name { get; set; } = null!;
+
+        public ICollection<AnimalEntity> Animals { get; set; } = [];
     }
 }

@@ -7,6 +7,8 @@ namespace Animal.Infrastructure
     {
         public DbSet<Specie> Species { get; set; }
 
+        public DbSet<AnimalEntity> Animals { get; set; }
+
         public AppAnimalContext() //Якщо не передаємо налашування
         {
             

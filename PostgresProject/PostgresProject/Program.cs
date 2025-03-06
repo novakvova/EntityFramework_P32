@@ -18,9 +18,7 @@ namespace PostgresProject
 
             var sp = DIConfiguration.GetServiceProvider();
             Console.WriteLine("Передаю вітання нашим друзям Броненосцям. :)!");
-
             var specieService = sp.GetService<ISpecieService>();
-
             try
             {
                specieService.CreateSpecie("Коти мурчик");
