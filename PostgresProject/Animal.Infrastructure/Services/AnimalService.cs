@@ -1,6 +1,8 @@
 ﻿using Animal.Infrastructure.Entities;
 using Animal.Infrastructure.Interfaces;
 using Animal.Infrastructure.Models.Animal;
+using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 
 namespace Animal.Infrastructure.Services
 {
@@ -8,11 +10,15 @@ namespace Animal.Infrastructure.Services
     {
         private readonly IRepository<AnimalEntity> _repository;
         private readonly IRepository<Specie> _specieRepository;
+        private readonly IMapper _mapper;
 
-        public AnimalService(IRepository<AnimalEntity> repository, IRepository<Specie> specieRepository)
+        public AnimalService(IRepository<AnimalEntity> repository, 
+            IRepository<Specie> specieRepository,
+            IMapper mapper)
         {
             _repository = repository;
             _specieRepository = specieRepository;
+            _mapper = mapper;
         }
 
         public bool Create(AnimalCreateModel model)
@@ -26,11 +32,7 @@ namespace Animal.Infrastructure.Services
 
             if (!_repository.GetQuery().Any(x => x.Name == model.Name))
             {
-                _repository.Add(new AnimalEntity { 
-                    Name = model.Name,  
-                    Description = model.Description, 
-                    SpecieId = model.SpecieId 
-                });
+                _repository.Add(_mapper.Map<AnimalEntity>(model));
                 _repository.SaveChanges();
                 Console.WriteLine("Animal added");
                 return true;
@@ -39,9 +41,16 @@ namespace Animal.Infrastructure.Services
             return false;
         }
 
-        public List<AnimalEntity> GetAll()
+        public List<AnimalItemModel> GetAll()
         {
-            return _repository.GetAll().ToList();
+            //return _repository.GetAll().ToList();
+            //return _repository.GetQuery()
+            //    .Include(x=>x.Specie)
+            //    .ToList();
+
+            return _mapper
+                .ProjectTo<AnimalItemModel>(_repository.GetQuery())
+                .ToList();
         }
 
         public AnimalEntity? GetById(int id)

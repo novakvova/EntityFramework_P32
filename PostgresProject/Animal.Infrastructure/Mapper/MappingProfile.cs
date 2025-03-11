@@ -10,6 +10,9 @@ namespace Animal.Infrastructure.Mapper
         {
             //Автоматично присвоїть одні поля одного об'єякта іншому об'єкту
             CreateMap<AnimalCreateModel, AnimalEntity>();
+
+            CreateMap<AnimalEntity, AnimalItemModel>()
+                .ForMember(x=>x.SpecieName, opt=>opt.MapFrom(x=>x.Specie.Name));
         }
     }
 }

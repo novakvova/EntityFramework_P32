@@ -20,10 +20,9 @@ namespace PostgresProject
             //{
             //    var model = new AnimalCreateModel
             //    {
-            //        Name = "Білий бобер",
-            //        Description = "Часто може з'являтися при приступах агреції та " +
-            //                        "неконтрольованому стані",
-            //        SpecieId = 15
+            //        Name = "Зелеиий бобер",
+            //        Description = "Весною стає зелений",
+            //        SpecieId = 14
             //    };
 
             //    animalService.Create(model);
@@ -33,7 +32,13 @@ namespace PostgresProject
             //    Console.WriteLine($"Щось пішло не так {ex.Message}");
             //}
 
-            
+
+            var list = animalService.GetAll();
+            foreach (var animal in list)
+            {
+                Console.WriteLine($"{animal.Id}\t{animal.Name}\t{animal.SpecieName}");
+            }
+
 
 
             //try
