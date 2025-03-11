@@ -22,6 +22,7 @@ namespace PostgresProject
                     //Repository
                     services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
                     services.AddScoped<ISpecieService, SpecieService>();
+                    services.AddScoped<IAnimalService, AnimalService>();
                 })
                 .Build();
 

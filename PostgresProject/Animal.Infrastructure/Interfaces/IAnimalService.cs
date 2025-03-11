@@ -1,13 +1,14 @@
 ﻿using Animal.Infrastructure.Entities;
+using Animal.Infrastructure.Models.Animal;
 
 namespace Animal.Infrastructure.Interfaces
 {
     public interface IAnimalService
     {
-        bool CreateAnimal(string name, string description, int specie_id);
-        List<AnimalEntity> GetAllAnimals();
-        AnimalEntity? GetAnimalById(int id);
-        bool UpdateAnimal(int id, string newName = "", string newDescription = "", int specie_id = 0);
-        bool DeleteAnimal(int id);
+        bool Create(AnimalCreateModel model);
+        List<AnimalEntity> GetAll();
+        AnimalEntity? GetById(int id);
+        bool Update(int id, string newName = "", string newDescription = "", int specie_id = 0);
+        bool Delete(int id);
     }
 }
