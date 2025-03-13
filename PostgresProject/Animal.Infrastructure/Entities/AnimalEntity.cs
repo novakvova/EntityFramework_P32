@@ -27,6 +27,11 @@ namespace Animal.Infrastructure.Entities
 
         public Specie Specie { get; set; } = default!;
 
+        [ForeignKey("ShelterLocation")]
+        public int? ShelterLocationId { get; set; }
+
+        public ShelterLocation? ShelterLocation { get; set; } 
+
         public int Age { get; set; }
 
         [StringLength(40000)]

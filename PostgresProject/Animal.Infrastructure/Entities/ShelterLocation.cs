@@ -17,5 +17,7 @@ namespace Animal.Infrastructure.Entities
         public string Adress { get; set; } = string.Empty;
         [StringLength(20)]
         public string? Phone { get; set; }
+
+        public ICollection<AnimalEntity> Animals { get; set; }
     }
 }
