@@ -16,7 +16,8 @@ namespace PostgresProject
                 {
                     //Прописумо налаштування для різних обєктів
                     services.AddDbContext<AppAnimalContext>(options =>
-                        options.UseNpgsql("Host=ep-damp-cell-a2taj2ik-pooler.eu-central-1.aws.neon.tech;Database=neondb;Username=neondb_owner;Password=npg_TnC7QlaA3bWx"));
+                        options.UseNpgsql("Server=localhost;Database=AnimalDb;User Id=postgres;Password=123456;"));
+                        //options.UseNpgsql("Host=ep-damp-cell-a2taj2ik-pooler.eu-central-1.aws.neon.tech;Database=neondb;Username=neondb_owner;Password=npg_TnC7QlaA3bWx"));
 
                     services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
                     //Якщо у коді потрібно репозіторій, то на основі IRepository буде створюватися
