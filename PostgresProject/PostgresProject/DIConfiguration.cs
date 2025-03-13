@@ -25,6 +25,7 @@ namespace PostgresProject
                     services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
                     services.AddScoped<ISpecieService, SpecieService>();
                     services.AddScoped<IAnimalService, AnimalService>();
+                    services.AddScoped<DatabaseSeeder>();
                 })
                 .Build();
 

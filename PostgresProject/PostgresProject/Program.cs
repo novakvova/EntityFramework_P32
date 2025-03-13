@@ -1,4 +1,5 @@
 ﻿using System.Text;
+using Animal.Infrastructure;
 using Animal.Infrastructure.Interfaces;
 using Animal.Infrastructure.Models.Animal;
 using Microsoft.Extensions.DependencyInjection;
@@ -14,8 +15,13 @@ namespace PostgresProject
 
             var sp = DIConfiguration.GetServiceProvider();
             Console.WriteLine("Передаю вітання нашим друзям Броненосцям. :)!");
-            var specieService = sp.GetService<ISpecieService>();
-            var animalService = sp.GetService<IAnimalService>();
+            var seeder = sp.GetService<DatabaseSeeder>();
+            seeder.SeedData();
+
+            //var specieService = sp.GetService<ISpecieService>();
+            //var animalService = sp.GetService<IAnimalService>();
+
+
             //try
             //{
             //    var model = new AnimalCreateModel
@@ -33,11 +39,11 @@ namespace PostgresProject
             //}
 
 
-            var list = animalService.GetAll();
-            foreach (var animal in list)
-            {
-                Console.WriteLine($"{animal.Id}\t{animal.Name}\t{animal.SpecieName}");
-            }
+            //var list = animalService.GetAll();
+            //foreach (var animal in list)
+            //{
+            //    Console.WriteLine($"{animal.Id}\t{animal.Name}\t{animal.SpecieName}");
+            //}
 
 
 
