@@ -3,6 +3,7 @@ using System;
 using Animal.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Animal.Infrastructure.Migrations
 {
     [DbContext(typeof(AppAnimalContext))]
-    partial class AppAnimalContextModelSnapshot : ModelSnapshot
+    [Migration("20250313135810_Add_tbl_shelter_locations")]
+    partial class Add_tbl_shelter_locations
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
