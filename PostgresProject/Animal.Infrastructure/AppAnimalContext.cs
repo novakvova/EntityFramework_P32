@@ -1,4 +1,5 @@
-﻿using Animal.Infrastructure.Entities;
+﻿using Animal.Infractructure.Entities;
+using Animal.Infrastructure.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace Animal.Infrastructure
@@ -12,6 +13,8 @@ namespace Animal.Infrastructure
         public DbSet<AnimalEntity> Animals { get; set; }
 
         public DbSet<AdopterEntity> Adopters { get; set; }
+
+        public DbSet<AdoptionEntity> Adoptions { get; set; }
 
         public AppAnimalContext() //Якщо не передаємо налашування
         {
