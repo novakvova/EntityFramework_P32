@@ -22,7 +22,7 @@ namespace Animal.Infrastructure
 
         public DbSet<MedicalRecordEntity> MedicalRecords { get; set; }
 
-        public DbSet<EmployeeInfo> EmployeeInfos { get; set; }
+        public DbSet<EmployeeInfoEntity> EmployeeInfos { get; set; }
 
         public AppAnimalContext() //Якщо не передаємо налашування
         {

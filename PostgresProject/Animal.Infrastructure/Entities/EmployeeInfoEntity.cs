@@ -4,8 +4,8 @@ using Animal.Infractructure.Entities;
 
 namespace Animal.Infrastructure.Entities
 {
-    [Table("EmployeeInfos")]
-    public class EmployeeInfo
+    [Table("tblEmployeeInfos")]
+    public class EmployeeInfoEntity
     {
         [Key, ForeignKey("Employee")]
         public int EmployeeId { get; set; }
