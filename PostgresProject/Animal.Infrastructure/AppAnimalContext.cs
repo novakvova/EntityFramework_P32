@@ -17,7 +17,10 @@ namespace Animal.Infrastructure
         public DbSet<AdoptionEntity> Adoptions { get; set; }
 
         public DbSet<AppointmentEntity> Appointments { get; set; }
+
         public DbSet<EmployeeEntity> Employees { get; set; }
+
+        public DbSet<MedicalRecordEntity> MedicalRecords { get; set; }
 
         public AppAnimalContext() //Якщо не передаємо налашування
         {
