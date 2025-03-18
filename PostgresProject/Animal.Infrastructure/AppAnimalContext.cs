@@ -11,6 +11,8 @@ namespace Animal.Infrastructure
 
         public DbSet<AnimalEntity> Animals { get; set; }
 
+        public DbSet<AdopterEntity> Adopters { get; set; }
+
         public AppAnimalContext() //Якщо не передаємо налашування
         {
             
