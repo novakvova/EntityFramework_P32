@@ -3,6 +3,7 @@ using System;
 using Animal.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Animal.Infrastructure.Migrations
 {
     [DbContext(typeof(AppAnimalContext))]
-    partial class AppAnimalContextModelSnapshot : ModelSnapshot
+    [Migration("20250318132949_Add_tblAppointments")]
+    partial class Add_tblAppointments
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -70,38 +73,6 @@ namespace Animal.Infrastructure.Migrations
                     b.HasIndex("AnimalId");
 
                     b.ToTable("tblAppointments");
-                });
-
-            modelBuilder.Entity("Animal.Infractructure.Entities.EmployeeEntity", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<DateOnly>("HireDate")
-                        .HasColumnType("date");
-
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("Position")
-                        .HasColumnType("text");
-
-                    b.Property<int>("ShelterLocationId")
-                        .HasColumnType("integer");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ShelterLocationId");
-
-                    b.ToTable("tblEmployees");
                 });
 
             modelBuilder.Entity("Animal.Infrastructure.Entities.AdopterEntity", b =>
@@ -255,17 +226,6 @@ namespace Animal.Infrastructure.Migrations
                         .IsRequired();
 
                     b.Navigation("Animal");
-                });
-
-            modelBuilder.Entity("Animal.Infractructure.Entities.EmployeeEntity", b =>
-                {
-                    b.HasOne("Animal.Infrastructure.Entities.ShelterLocation", "ShelterLocation")
-                        .WithMany()
-                        .HasForeignKey("ShelterLocationId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("ShelterLocation");
                 });
 
             modelBuilder.Entity("Animal.Infrastructure.Entities.AnimalEntity", b =>
