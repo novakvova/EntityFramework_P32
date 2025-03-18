@@ -1,4 +1,5 @@
-﻿using Animal.Infrastructure.Entities;
+﻿using Animal.Infractructure.Entities;
+using Animal.Infrastructure.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace Animal.Infrastructure;
@@ -62,6 +63,77 @@ public class DatabaseSeeder(AppAnimalContext context)
                 ShelterLocationId = 2
             };
             context.Animals.Add(dog);
+            context.SaveChanges();
+        }
+
+        if (!context.Adopters.Any())
+        {
+            var adopters = new List<AdopterEntity>
+            {
+                new AdopterEntity
+                {
+                    FirstName = "Олександр",
+                    LastName = "Петров",
+                    PhoneNumber = "+380931234567",
+                    Email = "petrov@example.com",
+                    Address = "вул. Шевченка, 15, Київ"
+                },
+                new AdopterEntity
+                {
+                    FirstName = "Марія",
+                    LastName = "Іваненко",
+                    PhoneNumber = "+380671112233",
+                    Email = "ivanenko@example.com",
+                    Address = "вул. Лесі Українки, 20, Львів"
+                }
+            };
+            context.Adopters.AddRange(adopters);
+            context.SaveChanges();
+        }
+
+        if (!context.Employees.Any())
+        {
+            var employees =
+                new List<EmployeeEntity>()
+                {
+                    new EmployeeEntity
+                    {
+                        FirstName = "Анна",
+                        LastName = "Сидоренко",
+                        Position = "Ветеринар",
+                        HireDate = DateOnly.Parse("2022-06-01"),
+                        ShelterLocationId = 1
+                    },
+                    new EmployeeEntity
+                    {
+                        FirstName = "Ігор",
+                        LastName = "Коваленко",
+                        Position = "Адміністратор",
+                        HireDate = DateOnly.Parse("2023-02-15"),
+                        ShelterLocationId = 2
+                    }
+                };
+            context.Employees.AddRange(employees);
+            context.SaveChanges();
+        }
+
+        if (!context.Adoptions.Any())
+        {
+            context.Adoptions.Add(new AdoptionEntity
+            { AdopterId = 1, AnimalId = 1, AdoptedOn = DateTime.Parse("2024-02-01").ToUniversalTime() });
+            context.SaveChanges();
+        }
+
+        if (!context.MedicalRecords.Any())
+        {
+            context.MedicalRecords.Add(new MedicalRecordEntity()
+            {
+                AnimalId = 1,
+                VisitDate = DateTime.Parse("2024-02-05").ToUniversalTime(),
+                Diagnosis = "Здоровий",
+                Treatment = "Не потебує лікування",
+                VetName = "Анна Сидоренко"
+            });
             context.SaveChanges();
         }
     }
