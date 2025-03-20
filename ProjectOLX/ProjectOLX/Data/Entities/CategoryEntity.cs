@@ -19,4 +19,9 @@ public class CategoryEntity : BaseEntity<long>
     [StringLength(40000)]
     public string? Description { get; set; }
 
+    [ForeignKey("Parent")]
+    public long? ParentId { get; set; }
+    public virtual CategoryEntity Parent { get; set; } = null!;
+
+    public virtual ICollection<CategoryEntity> Children { get; set; } = [];
 }
